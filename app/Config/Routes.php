@@ -8,5 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->group('api', function($routes){
-    $routes->resource('pasien');
+    $routes->resource('pasien', ['filter' => 'auth']);
 });
+
+$routes->group('user/v1', function($routes){
+    $routes->post('register', 'UserController::register');
+    $routes->post('login', 'UserController::login');
+});
+
