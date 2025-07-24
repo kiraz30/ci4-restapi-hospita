@@ -14,5 +14,6 @@ $routes->group('api', function($routes){
 $routes->group('user/v1', function($routes){
     $routes->post('register', 'UserController::register');
     $routes->post('login', 'UserController::login');
+    $routes->get('profile/(:num)', 'UserController::getProfile/$1', ['filter' => 'auth']);
 });
 

@@ -105,4 +105,44 @@ class UserController extends BaseController
             'token' => $token,
         ], 200);
     }
+
+
+    public function getProfile($id = null)
+    { 
+    
+        $userModel = new UsersModel();
+        $user = $userModel->find($id);
+
+        if (!$user) {
+            return $this->respond([
+                'status' => false,
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        return $this->respond([
+            'status' => true,
+            'data' => $user,
+        ], 200);
+    }
+
+    
+    public function editProfile($id = null)
+    { 
+    
+        $userModel = new UsersModel();
+        $user = $userModel->find($id);
+
+        if (!$user) {
+            return $this->respond([
+                'status' => false,
+                'message' => 'User not found',
+            ], 404);
+        }
+
+        return $this->respond([
+            'status' => true,
+            'data' => $user,
+        ], 200);
+    }
 }
