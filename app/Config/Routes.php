@@ -17,3 +17,7 @@ $routes->group('user/v1', function($routes){
     $routes->get('profile/(:num)', 'UserController::getProfile/$1', ['filter' => 'auth']);
 });
 
+$routes->group('email/v1', function($routes){
+    $routes->post('send', 'SendEmail::index');
+});
+
